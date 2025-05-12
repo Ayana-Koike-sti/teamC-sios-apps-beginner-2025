@@ -1,4 +1,6 @@
 import point_add
+from payment import process_payment
+
 items = [
     {'name': 'りんご', 'price': 100, 'stock': 10},
     {'name': 'バナナ', 'price': 80, 'stock': 20},
@@ -70,6 +72,7 @@ def main():
         print(f"お会計: {total_amount}円")
         point_system = point_add.PointCardSystem(total_amount)
         point_system.confirmationCard()
+        process_payment(total_amount)
     else:
         print("\n購入履歴はありません。")
 if __name__ == '__main__':
