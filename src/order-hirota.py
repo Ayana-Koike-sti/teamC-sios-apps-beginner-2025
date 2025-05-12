@@ -1,3 +1,4 @@
+import point_add
 items = [
     {'name': 'りんご', 'price': 100, 'stock': 10},
     {'name': 'バナナ', 'price': 80, 'stock': 20},
@@ -67,6 +68,8 @@ def main():
             print(f"商品名: {order['name']}, 個数: {order['quantity']}個, 合計金額: {order['total_price']}円")
             total_amount += order['total_price']
         print(f"お会計: {total_amount}円")
+        point_system = point_add.PointCardSystem(total_amount)
+        point_system.confirmationCard()
     else:
         print("\n購入履歴はありません。")
 if __name__ == '__main__':
