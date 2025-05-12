@@ -17,6 +17,14 @@ def menu():
     for item in items:
         print(f"商品名: {item['name']}, 価格: {item['price']}円, 在庫: {item['stock']}個")
 
+def view_cart():
+    if order_list:
+        print("\n注文かごの中身:")
+        for order in order_list:
+            print(f"商品名: {order['name']}, 個数: {order['quantity']}個, 合計金額: {order['total_price']}円")
+    else:
+        print("\n注文かごは空です。")
+
 def order_item():
     print("注文可能な商品一覧:")
     menu()
@@ -51,17 +59,20 @@ def main():
     while True:
         print("\nメニュー:")
         print("1. 注文")
-        print("2. 終了")
+        print("2. 注文かごの確認")
+        print("3. 終了")
 
         choice = input("選択してください: ")
 
         if choice == '1':
             order_item()
         elif choice == '2':
+            view_cart()
+        elif choice == '3':
             print("終了します。")
             break
         else:
-            print("'1'または'2'で入力お願いします。")
+            print("'1','2','3'で入力お願いします。")
 
     if order_list:
         print("\n購入履歴:")
@@ -75,5 +86,6 @@ def main():
         process_payment(total_amount)
     else:
         print("\n購入履歴はありません。")
+
 if __name__ == '__main__':
     main()
